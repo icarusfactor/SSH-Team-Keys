@@ -33,16 +33,17 @@ vim /etc/ssh/sshd_config
 *Setup of base directory restriction system:*
 
 *When limiting a key to use git versioning system functions you will need to add a directory for git function limitation .* 
-mkdir -p /home/dyount/git-shell-commands
+* mkdir -p /home/dyount/git-shell-commands
 *In this directory make soft links to programs that the user will be limited to use.* 
-ln -s /usr/bin/git  /home/dyount/git-shell-commands
-ln -s /usr/bin/git-upload-pack /home/dyount/git-shell-commands
-etc.. etc..
+* ln -s /usr/bin/git  /home/dyount/git-shell-commands
+* ln -s /usr/bin/git-upload-pack /home/dyount/git-shell-commands
+* etc.. etc..
 
 *If using rbash to limit shell access to a limited set of shell programs.* 
-mkdir -p /home/dyount/programs
-ln -s /usr/bin/date  /home/dyount/programs
-etc.. etc..
+
+* mkdir -p /home/dyount/programs
+* ln -s /usr/bin/date  /home/dyount/programs
+* etc.. etc..
 
 ## Create SSH custom alias key for client
 Generate key
@@ -56,7 +57,8 @@ Copy key to server.
 
 *Example Unix client config file settings for ssh.* 
 *This will let the client access the correct key auth according to alias host name.*
-vim /home/factor/.ssh/config
+* vim /home/factor/.ssh/config
+* 
 
     #Test Git  
     Host spotcheckit_test  
@@ -94,3 +96,4 @@ Example client command:
 
 
 *TODO: Need to make a gui plugin to control these so managers can easily grant or limit access to team members for ssh /git / shell.*  
+
