@@ -1,7 +1,6 @@
 # SSH-Team-Keys
 Setup a single SSH account and give different levels of access to specific ssh auth keys. 
 
-
 ## Team Keys: SSH multi user access
 
  When working within a single UN*X SSH account and on single or multiple domains and or subdomains and in a growing diverse environment, brings with it the need for multiple team member to work on one project or projects together without giving too much access to the overall account to any one member.  The UNIX file system permission settings for this setup quickly become limited and lacking in security and increasing in confusion. The SSH daemon has an answer to this and its use multiple keys with scripts that can be attached to each for restrictions, limitation and granting access to system resources.
@@ -68,6 +67,8 @@ Copy key to server.
     IdentityFile ~/.ssh/id_rsa_test
 
 ## Custom Server SSH Auth Key Restriction Setup
+
+* vim /home/dyount/.ssh/authorized_group_keys
 
 *For git:*
 
