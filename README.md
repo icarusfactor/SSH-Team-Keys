@@ -96,5 +96,4 @@ Example client command:
     
 
 
-*TODO: Need to make a gui plugin to control these so managers can easily grant or limit access to team members for ssh /git / shell.*  
-
+*TODO: Need to make a gui plugin to control these so managers can easily grant or limit access to team members for ssh /git / shell. Also, add shell control for PHP composer and NodeJS npm node commands.
