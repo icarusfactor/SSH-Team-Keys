@@ -108,6 +108,7 @@ Example client command:
 *This will let you run PHP composer and nodeJS installs updates, if change to specific site root directory and add to programs dir.*
 
 SSH Team Key command:(cd to specific dir, as restriction will not let them change directory after this.)
+
     command="cd /home/dyount/userspace.spotcheckit.org && export PATH=/home/dyount/programs/ && /bin/rbash"  
 
 Example client command:
@@ -118,6 +119,7 @@ Example client command:
 
 
 SSH Team Key command:(PATH can be different if you need to separate out commands even further per key.)
+
     command="cd /home/dyount/nodjsapp && export PATH=/home/dyount/programs/ && /bin/rbash"  
 
 Example client command:
