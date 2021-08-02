@@ -42,6 +42,7 @@ vim /etc/ssh/sshd_config
 
 * mkdir -p /home/dyount/programs
 * ln -s /usr/bin/date  /home/dyount/programs
+* ln -s /usr/local/bin/composer  /home/dyount/programs
 * etc.. etc..
 
 ## Create SSH custom alias key for client
@@ -94,6 +95,19 @@ Example client command:
 
     scp dyount@spotcheckit_test:/home/dyount/userspace.spotcheckit.org/* ./
     
+
+
+*For rbash*
+
+*To remove ssh access and only grants scp up and download access only.*
+
+    command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"
+    Example scp command using restricted key
+
+
+Example client command:
+
+    scp dyount@spotcheckit_test
 
 
 *TODO: Need to make a gui plugin to control these so managers can easily grant or limit access to team members for ssh /git / shell. Also, add shell control for PHP composer and NodeJS npm node commands.
