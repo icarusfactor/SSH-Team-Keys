@@ -100,6 +100,7 @@ Example client command:
 *For rbash*
 
 *log in with restricted bash, the only command access outside of rbash are the softlinked programs in /home/dyount/programs/.*
+*This will let you run PHP composer and nodeJS installs updates, if change to specific site root directory and add to programs dir.*
 
     command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"
     Example scp command using restricted key
