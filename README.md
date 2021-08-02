@@ -41,8 +41,13 @@ vim /etc/ssh/sshd_config
 *If using rbash to limit shell access to a limited set of shell programs.* 
 
 * mkdir -p /home/dyount/programs
-* ln -s /usr/bin/date  /home/dyount/programs
-* ln -s /usr/local/bin/composer  /home/dyount/programs
+* ln -s /usr/bin/date /home/dyount/programs
+* ln -s /usr/bin/ps /home/dyount/programs
+* ln -s /usr/bin/kill /home/dyount/programs
+* ln -s /usr/local/bin/composer /home/dyount/programs
+* ln -s /usr/local/bin/node /home/dyount/programs
+* ln -s /usr/local/bin/npm /home/dyount/programs
+* ln -s /usr/local/bin/npx /home/dyount/programs
 * etc.. etc..
 
 ## Create SSH custom alias key for client
@@ -102,13 +107,29 @@ Example client command:
 *log in with restricted bash, the only command access outside of rbash are the softlinked programs in /home/dyount/programs/.*
 *This will let you run PHP composer and nodeJS installs updates, if change to specific site root directory and add to programs dir.*
 
-    command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"  
+SSH Team Key command:(cd to specific dir, as restriction will not let them change directory after this.)
+    command="cd /home/dyount/userspace.spotcheckit.org && export PATH=/home/dyount/programs/ && /bin/rbash"  
 
 Example client command:
 
     scp dyount@spotcheckit_test
     composer -V
     Composer version 2.1.5 2021-07-23 10:35:47
+
+
+SSH Team Key command:(PATH can be different if you need to separate out commands even further per key.)
+    command="cd /home/dyount/nodjsapp && export PATH=/home/dyount/programs/ && /bin/rbash"  
+
+Example client command:
+
+    scp dyount@spotcheckit_test
+    node app.js
+    Server running at http://127.0.0.1:3000/
+
+
+Will provide more robust examples later. Still working out and testing resitrctions and grants of each. But Team Keys with rbash will let you limit a key to a specific directory and specific commands. Would like to make the gui able to customize a key with the variables as options to managers. Need to look into ssh-agent for time out connection, if not logged out correctly. 
+
+
 
 
 *TODO: Need to make a gui plugin (cPanel / WHM) to control these so managers can easily grant or limit access to team members for ssh /git / shell.
