@@ -102,13 +102,13 @@ Example client command:
 *log in with restricted bash, the only command access outside of rbash are the softlinked programs in /home/dyount/programs/.*
 *This will let you run PHP composer and nodeJS installs updates, if change to specific site root directory and add to programs dir.*
 
-    command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"
-    composer -V
-    Composer version 2.1.5 2021-07-23 10:35:47  
+    command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"  
 
 Example client command:
 
     scp dyount@spotcheckit_test
+    composer -V
+    Composer version 2.1.5 2021-07-23 10:35:47
 
 
 *TODO: Need to make a gui plugin (cPanel / WHM) to control these so managers can easily grant or limit access to team members for ssh /git / shell.
