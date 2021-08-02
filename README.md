@@ -99,7 +99,7 @@ Example client command:
 
 *For rbash*
 
-*To remove ssh access and only grants scp up and download access only.*
+*log in with restricted bash, the only command access outside of rbash are the softlinked programs in /home/dyount/programs/.*
 
     command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"
     Example scp command using restricted key
