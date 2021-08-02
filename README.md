@@ -103,7 +103,8 @@ Example client command:
 *This will let you run PHP composer and nodeJS installs updates, if change to specific site root directory and add to programs dir.*
 
     command="cd /home/dyount/userspace.spotcheckit.org && /bin/rbash"
-  
+    composer -V
+    Composer version 2.1.5 2021-07-23 10:35:47  
 
 Example client command:
 
