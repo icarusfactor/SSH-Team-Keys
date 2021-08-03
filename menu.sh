@@ -114,9 +114,8 @@ show_menus() {
         echo "q. Exit"
 }
 # read input from the keyboard and take a action
-# invoke the one() when the user select 1 from the menu option.
-# invoke the two() when the user select 2 from the menu option.
-# Exit when user the user select 3 form the menu option.
+# invoke the function when the user select menu options.
+# Exit when user the user select q from the menu options.
 read_options(){
         local choice
         read -p "Enter choice [1 2 3 4 5 6 7 8 9 0 a q] " choice
