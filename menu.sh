@@ -37,6 +37,20 @@ sshdsetup(){
         sed -i 's/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_team_keys/' /etc/ssh/sshd_config 
         echo "Made change to sshd_connig file."
         fi 
+
+        if [ -d "$BASEDIR/programs" ]; then
+         echo "programs Directory exists in $BASEDIR directory"
+        else
+        mkdir $BASEDIR/programs
+         echo "Made $BASEDIR/programs directory used by rbash."
+        fi 
+
+        if [ -d "$BASEDIR/git-shell-commands" ]; then
+         echo "git-shell-commands directory exists in $BASEDIR directory"
+        else
+        mkdir $BASEDIR/git-shell-commands
+         echo "Made $BASEDIR/git-shell-commands directory used by git."
+        fi 
         pause
 }
  
@@ -88,6 +102,16 @@ accessnode(){
 
 accessbasic(){
         echo "accessbasic() called"
+
+        if [ -d "$BASEDIR/programs" ]; then
+         echo "programs directory exists in $BASEDIR directory making soft links"
+         ln -s /bin/ls  $BASEDIR/programs
+         ln -s /bin/kill $BASEDIR/programs
+         ln -s /bin/ps $BASEDIR/programs
+        else
+         echo "Cant make softlinks programs directory needs to be made. "
+        fi 
+
         pause
 }
 
@@ -114,8 +138,9 @@ show_menus() {
         echo "q. Exit"
 }
 # read input from the keyboard and take a action
-# invoke the function when the user select menu options.
-# Exit when user the user select q from the menu options.
+# invoke the one() when the user select 1 from the menu option.
+# invoke the two() when the user select 2 from the menu option.
+# Exit when user the user select 3 form the menu option.
 read_options(){
         local choice
         read -p "Enter choice [1 2 3 4 5 6 7 8 9 0 a q] " choice
