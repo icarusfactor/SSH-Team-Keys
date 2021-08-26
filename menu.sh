@@ -8,7 +8,9 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-BASEDIR=/home/dyount
+
+USERDIR=dyount
+BASEDIR=/home/$USERDIR
  
 # ----------------------------------
 # User defined function
@@ -17,26 +19,33 @@ pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
 }
 
-sshdsetup(){
-        echo "SSHD setup directory and config file for separate team key and need to restart service"
 
-        #Need to check if team key has already been changed by search for authorized_team_keys
-        #Make directory for original files. 
-        if [ -f "$BASEDIR/sshteamkeys/orig" ]; then
-         echo "Backup directory orig already exists"
-        else
-         mkdir $BASEDIR/sshteamkeys/orig/
-         echo "Made backup directory..."
-        fi 
-  
-        if [ -f "$BASEDIR/sshteamkeys/orig/sshd_config" ]; then
-         echo "File exists in orig backup directory"
-        else
-        cp /etc/ssh/sshd_config $BASEDIR/sshteamkeys/orig/
-         echo "Made backup of sshd config..."
-        sed -i 's/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_team_keys/' /etc/ssh/sshd_config 
-        echo "Made change to sshd_connig file."
-        fi 
+
+#This will check for need of setup in etc directory.
+sshdsetup_root() { 
+
+                #Check for root exit if not.
+                if [[ $EUID -ne 0 ]]; then
+                  echo "This script section must be run as root" 
+                  exit 1
+                fi
+
+                if [ -f "/etc/ssh/sshd_config.orig" ]; then
+                   echo "Backup file exists in etc directory"
+                else
+                   cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
+                   echo "Made backup of sshd config..."
+                   sed -i 's/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_team_keys/' /etc/ssh/sshd_config 
+                   echo "Made change to sshd_config file."
+                   service sshd restart
+                   echo "Restarted sshd service."
+                fi 
+                 }
+
+
+#this will be for user directory setup.
+sshdsetup(){
+        echo "SSHD setup user directories"
 
         if [ -d "$BASEDIR/programs" ]; then
          echo "programs Directory exists in $BASEDIR directory"
@@ -51,6 +60,8 @@ sshdsetup(){
         mkdir $BASEDIR/git-shell-commands
          echo "Made $BASEDIR/git-shell-commands directory used by git."
         fi 
+
+
         pause
 }
  
@@ -109,7 +120,7 @@ accessbasic(){
          ln -s /bin/kill $BASEDIR/programs
          ln -s /bin/ps $BASEDIR/programs
         else
-         echo "Cant make softlinks programs directory needs to be made. "
+         echo "Cant make softlinks programs directory needs to be made."
         fi 
 
         pause
@@ -121,7 +132,8 @@ show_menus() {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~"
         echo " SSH TEAM KEYS - M E N U"
         echo "~~~~~~~~~~~~~~~~~~~~~~~~"
-        echo "1. SSHD SETUP"
+        echo "r. ROOT SSHD SETUP"
+        echo "1. USER SSHD SETUP"
         echo "2. ADD KEY"
         echo "3. REMOVE KEY"
         echo "4. CLEAR ALL TEAM KEYS"
@@ -145,6 +157,7 @@ read_options(){
         local choice
         read -p "Enter choice [1 2 3 4 5 6 7 8 9 0 a q] " choice
         case $choice in
+                r) sshdsetup_root ;;
                 1) sshdsetup ;;
                 2) sshadd ;;
                 3) sshremove ;;
