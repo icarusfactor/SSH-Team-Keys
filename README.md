@@ -98,7 +98,7 @@ NOTE: The host name is an alias name to use separate key and password while usin
 
 *To remove ssh access and only grants scp up and download access only.*
 
-    command="if [[ \"$SSH_ORIGINAL_COMMAND\" =~ ^scp.? ]]; then $SSH_ORIGINAL_COMMAND ; else echo Access Denied; fi"
+    command="if [[ \"$SSH_ORIGINAL_COMMAND\" =~ ^scp.? ]]; then $SSH_ORIGINAL_COMMAND ; else echo Access Denied; fi" ssh-rsa < SSH AUTH KEY > factorf2@yahoo.com
     Example scp command using restricted key
 
 
@@ -115,7 +115,7 @@ Example client command:
 
 SSH Team Key command:(cd to specific dir, as restriction will not let them change directory after this.)
 
-    command="cd /home/dyount/userspace.spotcheckit.org && export PATH=/home/dyount/programs/ && /bin/rbash"  
+    command="cd /home/dyount/userspace.spotcheckit.org && export PATH=/home/dyount/programs/ && /bin/rbash" ssh-rsa < SSH AUTH KEY > factorf2@yahoo.com  
 
 Example client command:
 
@@ -124,9 +124,9 @@ Example client command:
     Composer version 2.1.5 2021-07-23 10:35:47
 
 
-SSH Team Key command:(PATH can be different if you need to separate out commands even further per key.)
+SSH Group Key command:(PATH can be different if you need to separate out commands even further per key.)
 
-    command="cd /home/dyount/nodjsapp && export PATH=/home/dyount/programs/ && /bin/rbash"  
+    command="cd /home/dyount/nodjsapp && export PATH=/home/dyount/programs/ && /bin/rbash" ssh-rsa < SSH AUTH KEY > factorf2@yahoo.com 
 
 Example client command:
 
