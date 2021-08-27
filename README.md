@@ -31,9 +31,9 @@ vim /etc/ssh/sshd_config
 
 "Keep Note The Following:"
 
-"The key method to get shell restriction working is that it uses different passwords."
-"Which means,if someone knows the standard account password, they can use it to gain full access."
-"The custom hostname refrenced in client config file is just that, this is only known to client"
+The key method to get shell restriction working is that it uses different passwords.
+Which means,if someone knows the standard account password, they can use it to gain full access.
+The custom hostname refrenced in client config file is just that, this is only known to client
 
 *Setup of base directory restriction system:*
 
