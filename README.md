@@ -29,11 +29,13 @@ vim /etc/ssh/sshd_config
 
 ## Authorized keys: define who can access each system
 
-*Setup of base directory restriction system:*
+"Keep Note The Following:"
 
-"The key method to get shell restriction working is that its uses different passwords."
-"Which means,if someone knows the main password, they can use it to gain full access."
+"The key method to get shell restriction working is that it uses different passwords."
+"Which means,if someone knows the standard account password, they can use it to gain full access."
 "The custom hostname refrenced in client config file is just that, this is only known to client"
+
+*Setup of base directory restriction system:*
 
 *When limiting a key to use git versioning system functions you will need to add a directory for git function limitation .* 
 * mkdir -p /home/dyount/git-shell-commands
