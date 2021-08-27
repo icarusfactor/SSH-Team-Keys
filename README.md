@@ -31,6 +31,10 @@ vim /etc/ssh/sshd_config
 
 *Setup of base directory restriction system:*
 
+"The key method to get shell restriction working is that its uses different passwords."
+"Which means,if someone knows the main password, they can use it to gain full access."
+"The custom hostname refrenced in client config file is just that, this is only known to client"
+
 *When limiting a key to use git versioning system functions you will need to add a directory for git function limitation .* 
 * mkdir -p /home/dyount/git-shell-commands
 *In this directory make soft links to programs that the user will be limited to use.* 
