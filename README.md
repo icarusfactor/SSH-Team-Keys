@@ -98,11 +98,10 @@ NOTE: The host name is an alias name to use separate key and password while usin
 
 *To remove ssh access and only grants scp up and download access only.*
 
-    command="if [[ \"$SSH_ORIGINAL_COMMAND\" =~ ^scp.? ]]; then $SSH_ORIGINAL_COMMAND ; else echo Access Denied; fi" ssh-rsa < SSH AUTH KEY > factorf2@yahoo.com
-    Example scp command using restricted key
+    command="if [[ \"$SSH_ORIGINAL_COMMAND\" =~ ^scp.? ]]; then $SSH_ORIGINAL_COMMAND ; else echo Access Denied; fi" ssh-rsa < SSH AUTH KEY > factorf2@yahoo.com    
 
 
-Example client command:
+Example client scp command:
 
     scp dyount@spotcheckit_test:/home/dyount/userspace.spotcheckit.org/* ./
     
