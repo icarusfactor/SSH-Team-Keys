@@ -55,7 +55,7 @@ Generate key
 
     ssh-keygen -t rsa -C "factorf2@yahoo.com" -f '/home/factor/.ssh/id_rsa_test'
 
-Copy key to server. (To get this key added to group keys,manually copy it to remote file. Dont use this normal method.)
+Copy key to server. (To add key to ssh keys,manually copy it to remote file,dont use this method. Need to make a client script.)
 
     ssh-copy-id -i /home/dyount/.ssh/id_rsa_test.pub dyount@69.167.171.208
 
