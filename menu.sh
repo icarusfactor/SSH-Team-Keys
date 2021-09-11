@@ -78,7 +78,7 @@ sshadd(){
 #Remove line with email address in it.
 sshremove(){
         echo "sshremove() called"
-        read -sp 'SSH KEY: ' keyvar
+        read -sp 'KEY EMAIL: ' keyvar
         sed -i '/'$keyvar'/d' $KEYFILE 
         pause
 }
