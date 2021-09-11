@@ -11,6 +11,7 @@ STD='\033[0;0;39m'
 
 USERDIR=dyount
 BASEDIR=/home/$USERDIR
+KEYFILE=$BASEDIR/.ssh/authorized_group_keys
  
 # ----------------------------------
 # User defined function
@@ -35,7 +36,7 @@ sshdsetup_root() {
                 else
                    cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
                    echo "Made backup of sshd config..."
-                   sed -i 's/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_team_keys/' /etc/ssh/sshd_config 
+                   sed -i 's/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_group_keys/' /etc/ssh/sshd_config 
                    echo "Made change to sshd_config file."
                    service sshd restart
                    echo "Restarted sshd service."
@@ -67,16 +68,25 @@ sshdsetup(){
  
 sshadd(){
         echo "sshadd() called"
-        pause
-}
- 
-sshremove(){
-        echo "sshremove() called"
+        read -sp 'SSH KEY: ' keyvar
+        echo $keyvar >> $KEYFILE 
+        sed -i '/^$/d' $KEYFILE 
         pause
 }
 
+
+#Remove line with email address in it.
+sshremove(){
+        echo "sshremove() called"
+        read -sp 'SSH KEY: ' keyvar
+        sed -i '/'$keyvar'/d' $KEYFILE 
+        pause
+}
+
+#Make an empty file.
 sshclearall(){
         echo "sshclearall() called"
+        cat /dev/null > $KEYFILE       
         pause
 }
 
